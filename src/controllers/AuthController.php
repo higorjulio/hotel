@@ -21,6 +21,15 @@ class AuthController {
             exit;
         }
     }
+    public static function requireAdmin() {
+        self::requireLogin();
+        if ($_SESSION['user']['type'] !== 'admin') {
+            echo "Acesso negado.";
+            //timer de 5s para redirecionar para index.php
+            header('Refresh: 5; URL=../index.php');
+            exit;
+        }
+    }
     public static function logout() {
         session_destroy();
         header('Location: login.php');
