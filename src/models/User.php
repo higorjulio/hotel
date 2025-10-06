@@ -12,4 +12,9 @@ class User {
         $stmt = $pdo->prepare('INSERT INTO users (name, email, password, type) VALUES (?, ?, ?, ?)');
         return $stmt->execute([$name, $email, $password, $type]);
     }
+    public static function update($id, $name, $email, $password) {
+        global $pdo;
+        $stmt = $pdo->prepare('UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?');
+        return $stmt->execute([$name, $email, $password, $id]);
+    }
 }
