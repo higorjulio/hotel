@@ -3,7 +3,7 @@ require_once "../src/start.php";
 require_once "../src/controllers/AuthController.php";
 AuthController::requireAdmin();
 require_once "../templates/header.html";
-?>
+?>  
 
 <table class="table table-bordered border border-secondary-subtle">
     <?php
@@ -16,6 +16,7 @@ require_once "../templates/header.html";
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Tipo</th>
             </tr>
         </thead>
     <?php
@@ -27,6 +28,16 @@ require_once "../templates/header.html";
             <td><?=$usuario["id"]?></td>
             <td><?=$usuario["name"]?></td>
             <td><?=$usuario["email"]?></td>
+            <td>
+                <?php
+                    switch ($usuario["type"]) {
+                        case "admin": echo "Admin"; break;
+                        case "comprador": echo "Comprador"; break;
+                        case "vendedor": echo "Vendedor"; break;
+                        default: echo htmlspecialchars($usuario["type"]);
+                    }
+                ?>
+            </td>
         </tr>
         <?php
         }

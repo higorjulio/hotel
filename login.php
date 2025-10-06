@@ -69,7 +69,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php
         if($error){
             echo $error;
-            unset($error);
             return;
         }
         ?> 
