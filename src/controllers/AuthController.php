@@ -23,6 +23,14 @@ class AuthController {
             exit;
         }
     }
+    public static function requireVendedor() {
+        self::requireLogin();
+        if ($_SESSION['user']['type'] !== 'vendedor' && $_SESSION['user']['type'] !== 'admin') {
+            echo "Acesso negado.";
+            header('Location: login.php');
+            exit;
+        }
+    }
     public static function requireAdmin() {
         self::requireLogin();
         if ($_SESSION['user']['type'] !== 'admin') {
