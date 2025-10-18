@@ -1,21 +1,3 @@
-/* Miniaturas de quartos padronizadas */
-.room-thumb {
-  width: 320px;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 576px) {
-  /* Em telas muito pequenas, limite a largura ao container */
-  .room-thumb {
-    width: 100%;
-    height: 180px;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
