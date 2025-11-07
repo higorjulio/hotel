@@ -3,3 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+.head{
+  font-size: 24px;
+  font-weight: bold;
+  margin: 1% auto;
+  display: flex;
+  justify-content: center;
+}

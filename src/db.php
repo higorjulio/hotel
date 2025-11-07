@@ -34,9 +34,24 @@ try {
         description TEXT,
         image VARCHAR(255),
   FOREIGN KEY (user_id) REFERENCES users(id)
-);
-    
-    ");
+    );
+        ");
+    $pdo-> exec("CREATE TABLE IF NOT EXISTS notifications (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        receiver_id INT NOT NULL,  -- ID de quem recebe a notificaçõo
+        sender_id INT NOT NULL, -- ID do usuário que alugou o quarto
+        type ENUM(
+        'reservation_requested', 
+        'reservation_accepted', 
+        'reservation_rejected',
+        'room_rented' 
+        ) NOT NULL,
+        is_read BOOLEAN DEFAULT FALSE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE, -- AO DELETAR O USUÁRIO, DELETA AS NOTIFICAÇÕES
+        FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE
+    )
+        ");
 } catch (\PDOException $e) {
     //cria um banco de dados se ele não existir
     if ($e->getCode() == 1049) { 
