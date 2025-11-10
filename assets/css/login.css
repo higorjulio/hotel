@@ -1,0 +1,86 @@
+* :root {
+  --bege-claro: #f9f3e7;
+  --bege-mediano: #e8d3b9;
+  --marrom: #6b4226;
+  --marrom-escuro: #3b2418;
+  --marrom-claro: #8c5e3c;
+}
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bege-claro);
+}
+
+form {
+    background-color: #fff8f0;
+    border: 2px solid var(--marrom-escuro);
+    border-radius: 10px;
+    padding: 30px;
+    width: 350px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color:var(--marrom-claro);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--marrom-claro);
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #fffdf5;
+}
+
+form button {
+    width: 48%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+form button[type="submit"] {
+    background-color: var(--marrom-claro);
+    color: #fff;
+}
+
+form button[type="button"] {
+    background-color: var(--bege-mediano);
+    color: var(--marrom-claro);
+}
+
+form button:hover {
+    opacity: 0.85;
+}
+
+form .error {
+    color: var(--marrom);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-page form {
+    margin: 0 auto;
+}

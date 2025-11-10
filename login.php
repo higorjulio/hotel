@@ -30,19 +30,32 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-    <style>
-        .hidden { display: none; }
-    </style>
-    <script>
-        function showRegister() {
-            document.getElementById('login-form').classList.add('hidden');
-            document.getElementById('register-form').classList.remove('hidden');
-        }
-        function showLogin() {
-            document.getElementById('register-form').classList.add('hidden');
-            document.getElementById('login-form').classList.remove('hidden');
-        }
-    </script>
+<link rel="stylesheet" href="assets/css/login.css">
+
+<!-- isolar o login do restante do layout -->
+<style>
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f0e1;
+}
+</style>
+
+<script>
+    function showRegister() {
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('register-form').classList.remove('hidden');
+    }
+    function showLogin() {
+        document.getElementById('register-form').classList.add('hidden');
+        document.getElementById('login-form').classList.remove('hidden');
+    }
+</script>
+
+<!-- contêiner da página de login -->
+<div class="login-page">
 
 <div class="">
     <form id="login-form" method="post" action="login.php">
@@ -93,4 +106,5 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Registrar</button>
         <button type="button" onclick="showLogin()">Voltar</button>
     </form>
+</div>
 </div>
