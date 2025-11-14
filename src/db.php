@@ -33,7 +33,7 @@ try {
         price DECIMAL(10,2) NOT NULL,
         description TEXT,
         image VARCHAR(255),
-        is_rented BOOLEAN DEFAULT 'FALSE',
+        is_rented BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (user_id) REFERENCES users(id)
     );
         ");
