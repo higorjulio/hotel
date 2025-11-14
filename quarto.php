@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rent'])) {
         $userType = $_SESSION['user']['type'] ?? '';
         if ($userType === 'comprador' || $userType === 'admin') {
             $message = 'Reserva solicitada com sucesso.';
-            Notification::create($room['user_id'], $_SESSION['user']['id'], 'reservation_requested');
+            Notification::create($room['user_id'], $_SESSION['user']['id'], 'reservation_requested', $room['id']);
         } else {
             $message = 'Apenas compradores podem alugar este quarto.';
         }

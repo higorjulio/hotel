@@ -11,7 +11,8 @@ $rooms = Room::getAll();
 
 <div class="container mt-4">
     <div class="row">
-    <?php foreach($rooms as $room){ ?>
+    <?php foreach($rooms as $room){ 
+        if(!$room["is_rented"]){?>
 
         <div class="col-md-4 d-flex align-items-stretch">
             <div class="card mb-4 w-100">
@@ -30,7 +31,8 @@ $rooms = Room::getAll();
             </div>
         </div>
 
-    <?php } ?>
+    <?php } 
+    }?>
     </div>
 </div>
 

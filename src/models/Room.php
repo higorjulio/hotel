@@ -32,4 +32,10 @@ class Room {
         $stmt = $pdo->prepare('DELETE FROM rooms WHERE id = ?');
         return $stmt->execute([$id]);
     }
+
+    public static function rented($id) {
+        global $pdo;
+        $stmt = $pdo->prepare('UPDATE rooms SET is_rented = TRUE WHERE id = ?');
+        return $stmt->execute([$id]);
+    }
 }

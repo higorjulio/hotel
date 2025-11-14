@@ -3,10 +3,10 @@ require_once __DIR__ . '/../db.php';
 
 class Notification{
 
-    public static function create($receiver_id, $sender_id, $type){
+    public static function create($receiver_id, $sender_id, $type, $room_id){
         global $pdo;
-        $stmt = $pdo->prepare('INSERT INTO notifications (receiver_id, sender_id, type) VALUES (?, ?, ?)');
-        return $stmt->execute([$receiver_id, $sender_id, $type]);
+        $stmt = $pdo->prepare('INSERT INTO notifications (receiver_id, sender_id, type, room_id) VALUES (?, ?, ?, ?)');
+        return $stmt->execute([$receiver_id, $sender_id, $type, $room_id]);
     }
     public static function type(){
         return [
