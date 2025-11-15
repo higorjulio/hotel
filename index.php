@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/src/start.php';
 require_once __DIR__ . '/templates/header.html';
+require_once __DIR__ . "/src/models/Room.php";
 ?>
 
  </head>
@@ -25,44 +26,41 @@ a{
     </div>
   </section>
 
-  <!-- Conteúdo exemplo -->
+  <!-- Quartos -->
   <section class="container my-5">
     <div class="row">
+      <?php
+      $rooms = Room::getAll();
+      $lista = [];
+      $quartos = [];
+      foreach($rooms as $room){
+        if(!$room["is_rented"]){
+          $lista[] = $room;
+        }
+      }
+      
+      $quartos = [];
+      $keys = array_rand($lista, 3);
+      foreach($keys as $keys){
+      $quartos[] = $lista[$keys];
+      }
+      foreach($quartos as $quarto){
+      ?>
       <div class="col-md-4 mb-4">
         <div class="card card-feature">
-          <img src="assets/img/quarto1.jpg" class="card-img-top" alt="Quarto 1">
+          <img src=<?=$quarto["image"] ?? "https://placehold.co/320x180?text=Sem+Imagem"?> class="card-img-top" alt=<?=$quarto["title"]?>>
           <div class="card-body">
-            <h5 class="card-title">Quarto Standard</h5>
-            <p class="card-text">Descrição breve do quarto standard, confortável e bem localizado.</p>
-            <a href="quarto.php?id=1" class="btn btn-secondary">Ver Mais</a>
+            <h5 class="card-title"><?=$quarto["title"]?></h5>
+            <p class="card-text"><?=$quarto["description"] ?? "Sem descrição"?></p>
+            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-secondary">Ver Mais</a>
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card card-feature">
-          <img src="assets/img/quarto2.jpg" class="card-img-top" alt="Quarto 2">
-          <div class="card-body">
-            <h5 class="card-title">Quarto Deluxe</h5>
-            <p class="card-text">Versão deluxe com vista, mais espaço e conforto extra.</p>
-            <a href="quarto.php?id=2" class="btn btn-secondary">Ver Mais</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card card-feature">
-          <img src="assets/img/quarto3.jpg" class="card-img-top" alt="Quarto 3">
-          <div class="card-body">
-            <h5 class="card-title">Suíte Premium</h5>
-            <p class="card-text">Suíte premium para quem busca o melhor conforto e estilo.</p>
-            <a href="quarto.php?id=3" class="btn btn-secondary">Ver Mais</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      <?php }?>
   </section>
 
 <footer class="footer text-center py-4">
     <div class="container">
       <p class="mb-0">© 2025 Hotelys – Todos os direitos reservados</p>
     </div>
-  </footer>
+  <y/footer>
