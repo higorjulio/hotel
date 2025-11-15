@@ -40,6 +40,7 @@ a{
       }
       
       $quartos = [];
+      if(count($lista) <= 0) {echo "<p>Nenhum quarto disponível no momento.</p>";}else{
       $keys = array_rand($lista, 3);
       foreach($keys as $keys){
       $quartos[] = $lista[$keys];
@@ -56,7 +57,7 @@ a{
           </div>
         </div>
       </div>
-      <?php }?>
+      <?php } }?>
   </section>
 
 <footer class="footer text-center py-4">
