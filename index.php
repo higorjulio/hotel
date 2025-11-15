@@ -3,11 +3,63 @@ require_once __DIR__ . '/src/start.php';
 require_once __DIR__ . '/templates/header.html';
 ?>
 
-<h1>Bem-vindo ao Hotel BelMar!</h1>
-<p>Hotel BelMar tem o prazer em ser o único hotel hospedagem em João Pessoa - PB. Possuindo DNA da região em nosso nome, nosso complexo de hospedagens junta a praticidade de estar no centro da cidade com a tranquilidade da natureza presente por todo o hotel.
-Seja para uma aventura em família, uma escapada romântica ou tempo de lazer em contato com a natureza, oferecemos estrutura completa para proporcionar bem-estar, diversão e satisfação do começo ao fim de seu período conosco!
-Faça a escolha certa e hospede-se no Hotel BelMar para conhecer tudo que Jão Pessoa tem a lhe oferecer!</p>
- 
+ </head>
+<style>
+  #login, #notifications {
+    font-size: 150%;
+    color: #000;
+  }
+a{
+    text-decoration: none;
+  }
+</style>
+
+
+
+  <!-- Hero Section -->
+  <section class="hero text-center py-5">
+    <div class="container">
+      <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
+      <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
+      <a href="quartos.php" class="btn btn-primary btn-cta mt-3">Ver Quartos</a>
+    </div>
+  </section>
+
+  <!-- Conteúdo exemplo -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto1.jpg" class="card-img-top" alt="Quarto 1">
+          <div class="card-body">
+            <h5 class="card-title">Quarto Standard</h5>
+            <p class="card-text">Descrição breve do quarto standard, confortável e bem localizado.</p>
+            <a href="quarto.php?id=1" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto2.jpg" class="card-img-top" alt="Quarto 2">
+          <div class="card-body">
+            <h5 class="card-title">Quarto Deluxe</h5>
+            <p class="card-text">Versão deluxe com vista, mais espaço e conforto extra.</p>
+            <a href="quarto.php?id=2" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto3.jpg" class="card-img-top" alt="Quarto 3">
+          <div class="card-body">
+            <h5 class="card-title">Suíte Premium</h5>
+            <p class="card-text">Suíte premium para quem busca o melhor conforto e estilo.</p>
+            <a href="quarto.php?id=3" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <footer class="footer text-center py-4">
     <div class="container">
