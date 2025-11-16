@@ -6,12 +6,6 @@ require_once "src/models/Room.php";
 <?php
 
 $rooms = Room::getAll();
-if(!$rooms) {
-    echo "<h1>Nenhum quarto disponível no momento.</h1>";
-    echo "<p>Deseja adicionar um quarto?</p>";
-    echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
-    exit;
-}
 ?>
 
 <div class="container mt-4">
@@ -36,13 +30,22 @@ if(!$rooms) {
             </div>
         </div>
 
-    <?php } else{
-    echo "<h1>Nenhum quarto disponível no momento.</h1>";
-    echo "<p>Deseja adicionar um quarto?</p>";
-    echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
-    exit;
-    }
-    }?>
+    <?php }
+    
+    
+    
+}
+if(count($rooms) === 0) {
+echo "<h1>Nenhum quarto disponível no momento.</h1>";
+echo "<p>Deseja adicionar um quarto?</p>";
+echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
+} else{
+    ?>
+    <h1>Deseja adicionar um quarto?</h1>
+    <a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>
+<?php
+}
+?>
     </div>
 </div>
 
