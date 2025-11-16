@@ -40,7 +40,11 @@ a{
       }
       
       $quartos = [];
-      if(count($lista) <= 0) {echo "<p>Nenhum quarto disponível no momento.</p>";}else{
+      if(count($lista) <= 0) {
+        echo "<h1>Nenhum quarto disponível no momento.</h1>";
+        echo "<p>Deseja adicionar um quarto?</p>";
+        echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
+      }else{
       $keys = array_rand($lista, 3);
       foreach($keys as $keys){
       $quartos[] = $lista[$keys];
@@ -64,4 +68,4 @@ a{
     <div class="container">
       <p class="mb-0">© 2025 Hotelys – Todos os direitos reservados</p>
     </div>
-  <y/footer>
+  </footer>
