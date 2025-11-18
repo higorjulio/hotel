@@ -1,0 +1,104 @@
+<?php
+require_once __DIR__ . '/src/start.php';
+require_once __DIR__ . '/templates/header.html';
+require_once __DIR__ . '/src/controllers/AuthController.php';
+require_once __DIR__ . '/src/models/Notification.php';
+require_once __DIR__ . '/src/models/Room.php';
+AuthController::requireLogin();
+?>
+<style>
+    
+</style>
+<h2 class="head">Notificações</h2>
+
+<?php
+$sql = "SELECT n.*, u.name AS sender_name 
+FROM notifications n 
+JOIN users u 
+ON n.sender_id = u.id 
+WHERE n.receiver_id = ? 
+ORDER BY n.created_at DESC";
+if($_SESSION['user']['type'] === 'vendedor'){
+    $sql = "SELECT n.*, u.name AS sender_name 
+    FROM notifications n 
+    JOIN users u 
+    ON n.sender_id = u.id 
+    WHERE n.receiver_id = ? 
+    ORDER BY n.created_at ASC";
+}
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$_SESSION['user']['id']]);
+$typeDescriptions = Notification::type();
+foreach ($stmt as $notification) {
+    $typeText = $typeDescriptions[$notification['type']] ?? 'Notificação';
+    
+    //Transformar a data
+    $dt = new DateTime($notification['created_at']);
+    // $dt -> setTimezone(new DateTimeZone("America/Recife"));
+    $createdAt = $dt->format('d/m/Y H:i');
+    ?>
+    <div class="notificacao mb-3 p-3 border rounded">
+    <div class="texto">
+    <b><?=htmlspecialchars($typeText)?></b><br>
+    De: <?=htmlspecialchars($notification['sender_name'])?><br>
+    Quarto: <?=htmlspecialchars($notification['room_id'])?><br>
+    Data: <?=htmlspecialchars($createdAt)?><br>
+        <?php
+    if ($notification['type'] === 'reservation_requested') {
+        echo "Aceitar?";
+        ?>
+        <br>
+        <form method="post" style="display:inline-block">
+            <input type="hidden" name="notification_id" value="<?= (int)$notification['id'] ?>">
+            <input type="hidden" name="action" value="accept">
+            <button type="submit" class="btn btn-success">Aceitar</button>
+        </form>
+        <form method="post" style="display:inline-block; margin-left:8px;">
+            <input type="hidden" name="notification_id" value="<?= (int)$notification['id'] ?>">
+            <input type="hidden" name="action" value="reject">
+            <button type="submit" class="btn btn-danger">Rejeitar</button>
+        </form>
+
+        <!-- <button class="btn btn-success aceitar">Aceitar</button>
+        <button class="btn btn-danger rejeitar">Rejeitar</button> -->
+        <?php
+    }
+    ?>
+    </div>
+    </div>
+    <?php
+}
+if($stmt->rowCount() === 0){
+    echo "<h5 class='text-secondary text-center'>Nenhuma notificação encontrada.</h5>";
+}
+?>
+<!-- TODO: -->
+<!-- Sistema de aceitar e negar -->
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['notification_id'])){
+$action = $_POST['action'];
+    $notificationId = (int) $_POST['notification_id'];
+    
+    $stmtN = $pdo->prepare('SELECT * FROM notifications WHERE id = ? LIMIT 1');
+    $stmtN->execute([$notificationId]);
+    $notif = $stmtN->fetch();
+    if ($notif) {
+        $senderId = $notif['sender_id'];
+        $roomId = $notif['room_id'] ?? null;
+        $currentUserId = $_SESSION['user']['id'];
+        if ($action === 'accept') {
+            // if ($roomId) {
+            //     Room::delete($roomId);
+            // }
+            Notification::create($senderId, $currentUserId, 'reservation_accepted', $roomId);
+            Room::rented($roomId);
+             $pdo->prepare('DELETE FROM notifications WHERE id = ?')->execute([$notificationId]);
+        } elseif ($action === 'reject') {
+            Notification::create($senderId, $currentUserId, 'reservation_rejected', $roomId);
+            $pdo->prepare('DELETE FROM notifications WHERE id = ?')->execute([$notificationId]);
+        }
+        header('Location: ' . ($_SERVER['REQUEST_URI'] ?? 'notifications.php'));
+        exit;
+    }
+}
+?>

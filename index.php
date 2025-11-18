@@ -1,13 +1,68 @@
 <?php
 require_once __DIR__ . '/src/start.php';
 require_once __DIR__ . '/templates/header.html';
+require_once __DIR__ . "/src/models/Room.php";
 ?>
 
-<h1>Bem-vindo ao Hotelys!</h1>
-<p>Hotel BelMar tem o prazer em ser o único hotel hospedagem em jão Pessoa - PB. Possuindo DNA da região em nosso nome, nosso complexo de hospedagens junta a praticidade de estar no centro da cidade com a tranquilidade da natureza presente por todo o hotel.
-Seja para uma aventura em família, uma escapada romântica ou tempo de lazer em contato com a natureza, oferecemos estrutura completa para proporcionar bem-estar, diversão e satisfação do começo ao fim de seu período conosco!
-Faça a escolha certa e hospede-se no Hotel BelMar para conhecer tudo que Jão Pessoa tem a lhe oferecer!</p>
- 
+ </head>
+<style>
+  #login, #notifications {
+    font-size: 150%;
+    color: #000;
+  }
+a{
+    text-decoration: none;
+  }
+</style>
+
+
+
+  <!-- Hero Section -->
+  <section class="hero text-center py-5">
+    <div class="container">
+      <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
+      <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
+      <a href="quartos.php" class="btn btn-primary btn-cta mt-3">Ver Quartos</a>
+    </div>
+  </section>
+
+  <!-- Quartos -->
+  <section class="container my-5">
+    <div class="row">
+      <?php
+      $rooms = Room::getAll();
+      $lista = [];
+      $quartos = [];
+      foreach($rooms as $room){
+        if(!$room["is_rented"]){
+          $lista[] = $room;
+        }
+      }
+      
+      $quartos = [];
+      if(count($lista) <= 0) {
+        echo "<h1>Nenhum quarto disponível no momento.</h1>";
+        echo "<p>Deseja adicionar um quarto?</p>";
+        echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
+      }else{
+      $keys = array_rand($lista, 3);
+      foreach($keys as $keys){
+      $quartos[] = $lista[$keys];
+      }
+      foreach($quartos as $quarto){
+      ?>
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src=<?=$quarto["image"] ?? "https://placehold.co/320x180?text=Sem+Imagem"?> class="card-img-top" alt=<?=$quarto["title"]?>>
+          <div class="card-body">
+            <h5 class="card-title"><?=$quarto["title"]?></h5>
+            <p class="card-text"><?=$quarto["description"] ?? "Sem descrição"?></p>
+            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <?php } }?>
+  </section>
 
 <footer class="footer text-center py-4">
     <div class="container">

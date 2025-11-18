@@ -33,6 +33,7 @@ try {
         price DECIMAL(10,2) NOT NULL,
         description TEXT,
         image VARCHAR(255),
+        is_rented BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (user_id) REFERENCES users(id)
     );
         ");
@@ -40,6 +41,7 @@ try {
         id INT AUTO_INCREMENT PRIMARY KEY,
         receiver_id INT NOT NULL,  -- ID de quem recebe a notificaçõo
         sender_id INT NOT NULL, -- ID do usuário que alugou o quarto
+        room_id INT NOT NULL, -- ID do quarto relacionado à notificação
         type ENUM(
         'reservation_requested', 
         'reservation_accepted', 
@@ -48,8 +50,9 @@ try {
         ) NOT NULL,
         is_read BOOLEAN DEFAULT FALSE,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (receiver_id) REFERENCES users(id) ON DELETE CASCADE, -- AO DELETAR O USUÁRIO, DELETA AS NOTIFICAÇÕES
-        FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE
+        FOREIGN KEY (receiver_id) REFERENCES users(id),
+        FOREIGN KEY (sender_id) REFERENCES users(id),
+        FOREIGN KEY (room_id) REFERENCES rooms(id)
     )
         ");
 } catch (\PDOException $e) {

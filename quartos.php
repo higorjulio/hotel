@@ -6,12 +6,12 @@ require_once "src/models/Room.php";
 <?php
 
 $rooms = Room::getAll();
-
 ?>
 
 <div class="container mt-4">
     <div class="row">
-    <?php foreach($rooms as $room){ ?>
+    <?php foreach($rooms as $room){ 
+        if(!$room["is_rented"] && $room){?>
 
         <div class="col-md-4 d-flex align-items-stretch">
             <div class="card mb-4 w-100">
@@ -30,7 +30,22 @@ $rooms = Room::getAll();
             </div>
         </div>
 
-    <?php } ?>
+    <?php }
+    
+    
+    
+}
+if(count($rooms) === 0) {
+echo "<h1>Nenhum quarto disponível no momento.</h1>";
+echo "<p>Deseja adicionar um quarto?</p>";
+echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
+} else{
+    ?>
+    <h1>Deseja adicionar um quarto?</h1>
+    <a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>
+<?php
+}
+?>
     </div>
 </div>
 
