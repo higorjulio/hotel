@@ -45,6 +45,107 @@
       </div>
     </div>
   </nav>
+
+  <!-- Hero Section -->
+  <section class="hero text-center py-5">
+    <div class="container">
+      <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
+      <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
+      <a href="quartos.php" class="btn btn-primary btn-cta mt-3">Ver Quartos</a>
+    </div>
+  </section>
+
+  <!-- Conteúdo -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto1.jpg" class="card-img-top" alt="Quarto 1">
+          <div class="card-body">
+            <h5 class="card-title">Quarto Standard</h5>
+            <p class="card-text">Descrição breve do quarto standard, confortável e bem localizado.</p>
+            <a href="quarto.php?id=1" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto2.jpg" class="card-img-top" alt="Quarto 2">
+          <div class="card-body">
+            <h5 class="card-title">Quarto Deluxe</h5>
+            <p class="card-text">Versão deluxe com vista, mais espaço e conforto extra.</p>
+            <a href="quarto.php?id=2" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-feature">
+          <img src="assets/img/quarto3.jpg" class="card-img-top" alt="Quarto 3">
+          <div class="card-body">
+            <h5 class="card-title">Suíte Premium</h5>
+            <p class="card-text">Suíte premium para quem busca o melhor conforto e estilo.</p>
+            <a href="quarto.php?id=3" class="btn btn-secondary">Ver Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  <?php
+  $telefone = "40028922"; 
+  $mensagem = "Olá! Gostaria de mais informações.";
+  $link_whatsapp = "https://wa.me/$telefone?text=" . urlencode($mensagem);
+  ?>
+
+  <!-- Botão do whatsApp -->
+  <a href="<?php echo $link_whatsapp; ?>" class="whatsapp-float" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp" class="whatsapp-icon">
+  </a>
+
+  <div class="whatsapp-badge"></div>
+
+  <style>
+  .whatsapp-float {
+      position: fixed;
+      width: 70px;
+      height: 70px;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 100px rgba(0,0,0,0.2);
+      z-index: 9999;
+  }
+  .whatsapp-icon { 
+      width: 40px;
+      height: 40px;
+  }
+  .whatsapp-badge {
+      position: fixed;
+      bottom: 75px;
+      right: 20px;
+      background-color: red;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      border: 2px solid white;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  }
+  </style>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/script.js"></script>
+
