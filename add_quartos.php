@@ -1,6 +1,6 @@
 <?php
 require_once "src/start.php";
-require_once "templates/header.html";
+require_once "templates/header.php";
 require_once "src/models/Room.php";
 require_once "src/controllers/AuthController.php";
 AuthController::requireLogin();

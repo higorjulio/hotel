@@ -2,7 +2,7 @@
 require_once "../src/start.php";
 require_once "../src/controllers/AuthController.php";
 AuthController::requireAdmin();
-require_once "../templates/header.html";
+require_once "../templates/header.php";
 ?>  
 
 <table class="table table-bordered border border-secondary-subtle">
