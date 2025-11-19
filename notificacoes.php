@@ -97,7 +97,7 @@ $action = $_POST['action'];
             Notification::create($senderId, $currentUserId, 'reservation_rejected', $roomId);
             $pdo->prepare('DELETE FROM notifications WHERE id = ?')->execute([$notificationId]);
         }
-        header('Location: ' . ($_SERVER['REQUEST_URI'] ?? 'notifications.php'));
+        header('Location: ' . ($_SERVER['REQUEST_URI'] ?? 'notificacoes.php'));
         exit;
     }
 }
