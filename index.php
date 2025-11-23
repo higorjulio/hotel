@@ -66,6 +66,6 @@ a{
 
 <footer class="footer text-center py-4">
     <div class="container">
-      <p class="mb-0">© 2025 Hotel BelMar – Todos os direitos reservados</p>
+      <p class="mb-0">© 2025 BelMar – Todos os direitos reservados</p>
     </div>
   </footer>

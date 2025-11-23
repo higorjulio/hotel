@@ -1,6 +1,5 @@
 <?php
 require_once "src/start.php";
-require_once "templates/header.php";
 require_once "src/models/Room.php";
 require_once "src/controllers/AuthController.php";
 AuthController::requireLogin();
@@ -46,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else {
         $error = "Por favor, preencha todos os campos obrigatórios.";
 }
+require_once "templates/header.php";
 ?>
 
 <div class="container-sm">

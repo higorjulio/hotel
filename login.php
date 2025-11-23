@@ -1,8 +1,6 @@
 <?php
 require_once "src/start.php";
-require_once "templates/header.php";
 require_once "src/controllers/AuthController.php";
-
 $error = "";
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
