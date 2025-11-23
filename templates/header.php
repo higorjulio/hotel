@@ -239,7 +239,7 @@
     </div>
 
     <!-- Formulário de Login -->
-    <form id="login-form" method="post" action="login.php">
+    <form id="login-form" method="post" action="index.php">
       <?php
       if(isset($error) && $error) {
           echo '<div class="error">' . htmlspecialchars($error) . '</div>';
@@ -258,7 +258,7 @@
     </form>
 
     <!-- Formulário de Registro -->
-    <form id="register-form" class="hidden" method="post" action="login.php">
+    <form id="register-form" class="hidden" method="post" action="index.php">
       <?php
       if(isset($error) && $error) {
           echo '<div class="error">' . htmlspecialchars($error) . '</div>';
