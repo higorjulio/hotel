@@ -22,7 +22,7 @@ a{
     <div class="container">
       <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
       <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
-      <a href="quartos.php" class="btn btn-primary btn-cta mt-3">Ver Quartos</a>
+      <a href="quartos.php" class="btn btn-primary btn-cta mt-3" style="padding: 2rem 3rem;">Ver Quartos</a>
     </div>
   </section>
 
