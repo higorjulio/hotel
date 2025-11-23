@@ -17,50 +17,105 @@ body {
 
 /* Navbar */
 .custom-navbar {
-  background-color: var(--bege-mediano) !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-.text-brand {
-  color: var(--marrom) !important;
-  font-size: 1.6rem;
-}
-.text-nav {
-  color: var(--marrom) !important;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.text-nav:hover {
-  color: var(--marrom-escuro) !important;
-  transform: translateY(-2px);
-}
-.icon-link i {
-  font-size: 1.3rem;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("imagens/quarto-deluxe.jpg") center/cover no-repeat;
+  padding: 1rem 0;
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
 }
 
+/* nome do hotel */
+.text-brand {
+  color: var(--bege-claro) !important;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* links */
+.text-nav {
+  color: var(--bege-claro) !important;
+  font-size: 1.05rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* hover elegante */
+.text-nav:hover {
+  color: var(--bege-mediano) !important;
+  transform: translateY(-3px);
+}
+
+/* icones */
+.icon-link i {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.icon-link:hover i {
+  transform: scale(1.15);
+}
+
+/* nav mobile */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0) invert(1);
+}
 /* Hero Section */
 .hero {
-  background-color: var(--bege-mediano);
+  background-image: url("imagens/hero-hotel.jpg");
+  background-color: var(--bege-claro);
+  height: 750px;
+  text-transform: uppercase;
 }
 .hero-title {
-  color: var(--marrom-escuro);
+  color: var(--bege-claro);
   font-size: 2.5rem;
+  margin-top: 150px;
+
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideIn 1.2s ease-out forwards;
 }
 .hero-subtitle {
-  color: var(--marrom);
+  color: var(--bege-mediano);
   font-size: 1.2rem;
+  height: 200px;
+
+  opacity: 0;
+  transform: translateX(-60px);
+  animation: slideIn 1.2s ease-out forwards;
 }
 
 /* Botões */
 .btn-primary {
   background-color: var(--marrom) !important;
-  border: none;
-  padding: 0.65rem 1.4rem;
+  padding: 2rem 3rem;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-size: 1.2rem;
+  transition: all 0.25s ease;
+  box-shadow: var(--marrom-escuro);
+  border-color: var(--marrom-escuro);
 }
 .btn-primary:hover {
   background-color: var(--marrom-escuro) !important;
 }
 .btn-secondary {
   background-color: var(--marrom-claro) !important;
-  border: none;
+  padding: 1rem 2rem;
 }
 .btn-secondary:hover {
   background-color: var(--marrom) !important;
@@ -84,10 +139,83 @@ body {
 }
 .card-feature .card-body {
   background-color: #fffaf3;
+} 
+
+/*whatsapp animação */
+.whatsapp-float {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #25d366 0%, #20ba5a 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 32px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover .whatsapp-icon {
+  transform: scale(1.1);
+}
+
+.whatsapp-badge {
+  position: fixed;
+  bottom: 75px;
+  right: 20px;
+  background: linear-gradient(135deg, #ff3b3b 0%, #d32f2f 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
 /* Rodapé */
 .footer {
   background-color: var(--marrom) !important;
   color: var(--bege-claro);
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-700px);
+  }
+  100% {
+    opacity: 1000;
+    transform: translateX(-600px);
+  }
 }

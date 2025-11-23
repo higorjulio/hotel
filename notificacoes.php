@@ -7,7 +7,66 @@ require_once __DIR__ . '/src/models/Room.php';
 AuthController::requireLogin();
 ?>
 <style>
-    
+    .notificacao {
+    background: #fff8f0; /* bege claro */
+    border: 1px solid var(--marrom-claro);
+    border-left: 5px solid var(--marrom-escuro);
+    border-radius: 10px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.notificacao:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.notificacao .texto {
+    color: var(--marrom-escuro);
+    font-size: 1rem;
+}
+
+.notificacao b {
+    color: var(--marrom-claro);
+    font-size: 1.1rem;
+}
+
+.btn-success,
+.btn-danger {
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.btn-success {
+    background-color: var(--marrom-claro);
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: var(--marrom-escuro);
+}
+
+.btn-danger {
+    background-color: #b54a4a;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #8a3535;
+}
+
+.head {
+    text-align: center;
+    margin: 25px 0;
+    color: var(--marrom-escuro);
+    font-weight: bold;
+}
+
 </style>
 <h2 class="head">Notificações</h2>
 
