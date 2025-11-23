@@ -1,35 +1,35 @@
 <?php
 require_once __DIR__ . '/src/start.php';
-require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . '/src/controllers/AuthController.php';
 require_once __DIR__ . '/src/models/Notification.php';
 require_once __DIR__ . '/src/models/Room.php';
 AuthController::requireLogin();
+require_once __DIR__ . '/templates/header.php';
 ?>
 <style>
     .notificacao {
-    background: #fff8f0; /* bege claro */
-    border: 1px solid var(--marrom-claro);
-    border-left: 5px solid var(--marrom-escuro);
-    border-radius: 10px;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    transition: 0.2s;
-}
-
-.notificacao:hover {
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
-
-.notificacao .texto {
-    color: var(--marrom-escuro);
-    font-size: 1rem;
-}
-
+        background: #fff8f0; /* bege claro */
+        border: 1px solid var(--marrom-claro);
+        border-left: 5px solid var(--marrom-escuro);
+        border-radius: 10px;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        transition: 0.2s;
+    }
+    
+    .notificacao:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    
+    .notificacao .texto {
+        color: var(--marrom-escuro);
+        font-size: 1rem;
+    }
+    
 .notificacao b {
     color: var(--marrom-claro);
     font-size: 1.1rem;
