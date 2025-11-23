@@ -19,7 +19,7 @@ class AuthController {
 
     public static function requireLogin() {
         if (!isset($_SESSION['user'])) {
-            header('Location: login.php');
+            header('Location: index.php');
             exit;
         }
     }
@@ -27,7 +27,7 @@ class AuthController {
         self::requireLogin();
         if ($_SESSION['user']['type'] !== 'vendedor' && $_SESSION['user']['type'] !== 'admin') {
             echo "Acesso negado.";
-            header('Location: login.php');
+            header('Location: index.php');
             exit;
         }
     }

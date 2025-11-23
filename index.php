@@ -22,7 +22,7 @@ a{
     <div class="container">
       <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
       <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
-      <a href="quartos.php" class="btn btn-primary btn-cta mt-3">Ver Quartos</a>
+      <a href="quartos.php" class="btn btn-primary btn-cta mt-3" style="padding: 2rem 3rem;">Ver Quartos</a>
     </div>
   </section>
 
@@ -57,7 +57,7 @@ a{
           <div class="card-body">
             <h5 class="card-title"><?=$quarto["title"]?></h5>
             <p class="card-text"><?=$quarto["description"] ?? "Sem descrição"?></p>
-            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-secondary">Ver Mais</a>
+            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-primary">Ver Mais</a>
           </div>
         </div>
       </div>
@@ -66,6 +66,6 @@ a{
 
 <footer class="footer text-center py-4">
     <div class="container">
-      <p class="mb-0">© 2025 Hotel BelMar – Todos os direitos reservados</p>
+      <p class="mb-0">© 2025 BelMar – Todos os direitos reservados</p>
     </div>
   </footer>

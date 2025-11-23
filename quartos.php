@@ -1,11 +1,11 @@
 <?php
 require_once "src/start.php";
-require_once "templates/header.php";
 require_once "src/models/Room.php";
 ?>
 <?php
 
 $rooms = Room::getAll();
+require_once "templates/header.php";
 ?>
 
 <div class="container mt-4">
