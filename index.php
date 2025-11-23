@@ -57,7 +57,7 @@ a{
           <div class="card-body">
             <h5 class="card-title"><?=$quarto["title"]?></h5>
             <p class="card-text"><?=$quarto["description"] ?? "Sem descrição"?></p>
-            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-secondary">Ver Mais</a>
+            <a href="quarto.php?id=<?=$quarto["id"]?>" class="btn btn-primary">Ver Mais</a>
           </div>
         </div>
       </div>

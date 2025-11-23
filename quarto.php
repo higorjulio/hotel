@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rent'])) {
 
                 <form method="post">
                     <button name="rent" class="btn btn-primary">Alugar</button>
-                    <a href="quartos.php" class="btn btn-secondary">Voltar</a>
+                    <a href="quartos.php" class="btn btn-secondary" style="background-color: black;">Voltar</a>
                 </form>
             </div>
         </div>
