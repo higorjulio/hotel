@@ -66,7 +66,9 @@ require_once __DIR__ . '/templates/header.php';
     color: var(--marrom-escuro);
     font-weight: bold;
 }
-
+a{
+    color: var(--marrom-escuro);
+}
 </style>
 <h2 class="head">Notificações</h2>
 
@@ -95,12 +97,14 @@ foreach ($stmt as $notification) {
     $dt = new DateTime($notification['created_at']);
     // $dt -> setTimezone(new DateTimeZone("America/Recife"));
     $createdAt = $dt->format('d/m/Y H:i');
+
+    $roomTitle = Room::findById($notification['room_id'])['title']
     ?>
     <div class="notificacao mb-3 p-3 border rounded">
     <div class="texto">
     <b><?=htmlspecialchars($typeText)?></b><br>
     De: <?=htmlspecialchars($notification['sender_name'])?><br>
-    Quarto: <?=htmlspecialchars($notification['room_id'])?><br>
+    Quarto: <a href='quarto.php?id=<?=htmlspecialchars($notification['room_id'])?>'><?=htmlspecialchars($roomTitle)?></a><br>
     Data: <?=htmlspecialchars($createdAt)?><br>
         <?php
     if ($notification['type'] === 'reservation_requested') {
