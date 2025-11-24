@@ -20,7 +20,7 @@ a{
   <!-- Hero Section -->
   <section class="hero text-center py-5">
     <div class="container">
-      <h1 class="fw-bold hero-title">Bem-vindo ao BelMar</h1>
+      <h1 class="fw-bold hero-title">Bem-vindo ao Lotus</h1>
       <p class="hero-subtitle">Conforto, praticidade e elegância no seu descanso.</p>
       <a href="quartos.php" class="btn btn-primary btn-cta mt-3" style="padding: 2rem 3rem;">Ver Quartos</a>
     </div>
@@ -32,24 +32,28 @@ a{
       <?php
       $rooms = Room::getAll();
       $lista = [];
-      $quartos = [];
       foreach($rooms as $room){
-        if(!$room["is_rented"]){
+        if(!$room["is_rented"]) {
           $lista[] = $room;
         }
       }
-      
-      $quartos = [];
-      if(count($lista) <= 0) {
+
+      if (count($lista) <= 0) {
         echo "<h1>Nenhum quarto disponível no momento.</h1>";
         echo "<p>Deseja adicionar um quarto?</p>";
         echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
-      }else{
-      $keys = array_rand($lista, 3);
-      foreach($keys as $keys){
-      $quartos[] = $lista[$keys];
-      }
-      foreach($quartos as $quarto){
+      } else {
+        if (count($lista) <= 2) {
+          $quartos = [ $lista[0] ];
+        } else {
+          // Pegar 3 quartos aleatórios
+          $keys = array_rand($lista, 3);
+          $quartos = [];
+          foreach ((array) $keys as $k) {
+            $quartos[] = $lista[$k];
+          }
+        }
+        foreach ($quartos as $quarto) {
       ?>
       <div class="col-md-4 mb-4">
         <div class="card card-feature">
@@ -66,6 +70,6 @@ a{
 
 <footer class="footer text-center py-4">
     <div class="container">
-      <p class="mb-0">© 2025 BelMar – Todos os direitos reservados</p>
+      <p class="mb-0">© 2025 Lotus – Todos os direitos reservados</p>
     </div>
   </footer>

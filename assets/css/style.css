@@ -76,13 +76,15 @@ body {
 .hero {
   background-image: url("imagens/hero-hotel.jpg");
   background-color: var(--bege-claro);
-  height: 750px;
+  min-height: 420px;
+  padding: 3rem 0;
+  display: flex;
+  align-items: center;
   text-transform: uppercase;
 }
 .hero-title {
   color: var(--bege-claro);
   font-size: 2.5rem;
-  margin-top: 150px;
 
   opacity: 0;
   transform: translateX(-60px);
@@ -91,8 +93,6 @@ body {
 .hero-subtitle {
   color: var(--bege-mediano);
   font-size: 1.2rem;
-  height: 200px;
-
   opacity: 0;
   transform: translateX(-60px);
   animation: slideIn 1.2s ease-out forwards;
@@ -138,8 +138,31 @@ body {
   box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 .card-feature .card-img-top {
+  width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+/* Responsive tweaks */
+@media (max-width: 991.98px) {
+  .hero {
+    min-height: 360px;
+    padding: 2rem 0;
+  }
+  .hero-title { font-size: 2rem; }
+  .card-feature .card-img-top { height: 180px; }
+}
+
+@media (max-width: 575.98px) {
+  .hero {
+    min-height: 260px;
+    padding: 1.5rem 0;
+    background-position: center top;
+  }
+  .hero-title { font-size: 1.6rem; margin-top: 0; }
+  .hero-subtitle { font-size: 1rem; }
+  .card-feature .card-img-top { height: 140px; }
+  .btn-primary, .btn-secondary { padding: 0.6rem 0.9rem; font-size: 0.95rem; }
 }
 .card-feature .card-body {
   background-color: #fffaf3;
