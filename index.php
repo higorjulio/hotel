@@ -32,28 +32,24 @@ a{
       <?php
       $rooms = Room::getAll();
       $lista = [];
+      $quartos = [];
       foreach($rooms as $room){
-        if(!$room["is_rented"]) {
+        if(!$room["is_rented"]){
           $lista[] = $room;
         }
       }
-
-      if (count($lista) <= 0) {
+      
+      $quartos = [];
+      if(count($lista) <= 0) {
         echo "<h1>Nenhum quarto disponível no momento.</h1>";
         echo "<p>Deseja adicionar um quarto?</p>";
         echo '<a href="add_quartos.php" class="btn btn-primary ">Adicionar Quarto</a>';
-      } else {
-        if (count($lista) <= 2) {
-          $quartos = [ $lista[0] ];
-        } else {
-          // Pegar 3 quartos aleatórios
-          $keys = array_rand($lista, 3);
-          $quartos = [];
-          foreach ((array) $keys as $k) {
-            $quartos[] = $lista[$k];
-          }
-        }
-        foreach ($quartos as $quarto) {
+      }else{
+      $keys = array_rand($lista, 3);
+      foreach($keys as $keys){
+      $quartos[] = $lista[$keys];
+      }
+      foreach($quartos as $quarto){
       ?>
       <div class="col-md-4 mb-4">
         <div class="card card-feature">

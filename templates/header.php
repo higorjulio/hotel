@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">   
     
     <!-- CSS para o Modal de Login -->
     <style>
@@ -198,7 +199,10 @@
     <!-- Navbar principal -->
   <nav class="navbar navbar-expand-lg navbar-light custom-navbar py-3">
     <div class="container">
-      <a class="navbar-brand text-brand" href="index.php">BelMar</a>
+      <i class="logo">
+         <img src="assets/logo.png" width="90" height="90">
+      </i>
+      <a class="navbar-brand text-brand" href="index.php">Lotus</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -239,7 +243,7 @@
     </div>
 
     <!-- Formulário de Login -->
-    <form id="login-form" method="post" action="login.php">
+    <form id="login-form" method="post" action="index.php">
       <?php
       if(isset($error) && $error) {
           echo '<div class="error">' . htmlspecialchars($error) . '</div>';
@@ -258,7 +262,7 @@
     </form>
 
     <!-- Formulário de Registro -->
-    <form id="register-form" class="hidden" method="post" action="login.php">
+    <form id="register-form" class="hidden" method="post" action="index.php">
       <?php
       if(isset($error) && $error) {
           echo '<div class="error">' . htmlspecialchars($error) . '</div>';

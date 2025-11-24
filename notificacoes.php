@@ -4,6 +4,29 @@ require_once __DIR__ . '/src/controllers/AuthController.php';
 require_once __DIR__ . '/src/models/Notification.php';
 require_once __DIR__ . '/src/models/Room.php';
 AuthController::requireLogin();
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['notification_id'])){
+    $action = $_POST['action'];
+    $notificationId = (int) $_POST['notification_id'];
+
+    $stmtN = $pdo->prepare('SELECT * FROM notifications WHERE id = ? LIMIT 1');
+    $stmtN->execute([$notificationId]);
+    $notif = $stmtN->fetch();
+    if ($notif) {
+        $senderId = $notif['sender_id'];
+        $roomId = $notif['room_id'] ?? null;
+        $currentUserId = $_SESSION['user']['id'];
+        if ($action === 'accept') {
+            Notification::create($senderId, $currentUserId, 'reservation_accepted', $roomId);
+            Room::rented($roomId);
+            $pdo->prepare('DELETE FROM notifications WHERE id = ?')->execute([$notificationId]);
+        } elseif ($action === 'reject') {
+            Notification::create($senderId, $currentUserId, 'reservation_rejected', $roomId);
+            $pdo->prepare('DELETE FROM notifications WHERE id = ?')->execute([$notificationId]);
+        }
+    }
+    header('Location: notificacoes.php');
+    exit;
+}
 require_once __DIR__ . '/templates/header.php';
 ?>
 <style>

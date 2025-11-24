@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'hotel';
+$db   = 'hotel2';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
