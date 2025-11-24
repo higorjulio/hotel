@@ -22,6 +22,7 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['rent'])) {
     if (!isset($_SESSION['user'])) {
         $message = 'Você precisa fazer login para alugar este quarto.';
+        echo $_SESSION['user'];
     } else {
         $userType = $_SESSION['user']['type'] ?? '';
         if ($userType === 'comprador' || $userType === 'admin') {

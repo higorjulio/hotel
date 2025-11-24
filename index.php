@@ -1,5 +1,33 @@
 <?php
 require_once __DIR__ . '/src/start.php';
+require_once __DIR__ . '/src/controllers/AuthController.php';
+
+$error = '';
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['type'])) {
+        // Registro
+        $name = trim($_POST['name']);
+        $email = trim($_POST['email']);
+        $password = $_POST['password'];
+        $type = $_POST['type'];
+        if (AuthController::register($name, $email, $password, $type)) {
+            $error = 'Registrado com sucesso! Faça login.';
+        } else {
+            $error = 'Erro ao registrar. E-mail já está em uso.';
+        }
+    } elseif (isset($_POST['email'], $_POST['password'])) {
+        // Login
+        $email = trim($_POST['email']);
+        $password = $_POST['password'];
+        if (AuthController::login($email, $password)) {
+            header('Location: index.php');
+            exit;
+        } else {
+            $error = 'E-mail ou senha inválidos.';
+        }
+    }
+}
+
 require_once __DIR__ . '/templates/header.php';
 require_once __DIR__ . "/src/models/Room.php";
 ?>
